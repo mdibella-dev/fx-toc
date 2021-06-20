@@ -71,7 +71,7 @@ function fx_toc_sc_get_unique_name( $heading ) {
 
 /**
  * Reset Unique Name
- * 
+ *
  * @since 0.1.0
  */
 function fx_toc_sc_unique_names_reset(){

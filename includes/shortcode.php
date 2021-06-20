@@ -25,8 +25,8 @@ function fx_toc_shortcode( $atts ){
 	/* Default shortcode attr */
 	$default_args = apply_filters( 'fx_toc_default_args', array(
 		'depth'          => 6,
-		'list'           => 'ul',
-		'title'          => __( 'Table of contents', 'fx-toc' ),
+		'list'           => 'ol',
+		'title'          => __( 'Inhalt', 'fx-toc' ),
 		'title_tag'      => 'h2',
 	) );
 
@@ -51,8 +51,8 @@ function fx_toc_build_toc( $content, $args ){
 	/* Shortcode attr */
 	$default_args = apply_filters( 'fx_toc_default_args', array(
 		'depth'          => 6,
-		'list'           => 'ul',
-		'title'          => __( 'Table of contents', 'fx-toc' ),
+		'list'           => 'ol',
+		'title'          => __( 'Inhalt', 'fx-toc' ),
 		'title_tag'      => 'h2',
 	) );
 	$attr = wp_parse_args( $args, $default_args );
@@ -84,7 +84,7 @@ function fx_toc_build_toc( $content, $args ){
 	preg_match_all( "#<\!--nextpage-->#i", $content, $next_pages, PREG_OFFSET_CAPTURE );
 	$next_pages = $next_pages[0];
 
-	/* Get all headings in post content */ 
+	/* Get all headings in post content */
 	$headings = array();
 	preg_match_all( "#<h([1-6]).*?>(.*?)</h[1-6]>#i", $content, $headings, PREG_OFFSET_CAPTURE );
 
@@ -98,18 +98,18 @@ function fx_toc_build_toc( $content, $args ){
 	$out = ''; //output
 
 	/* Open sesame */
-	$open = '<div class="fx-toc fx-toc-id-' . get_the_ID() . '">';
+	$open = '<aside class="toc toc-id-' . get_the_ID() . '">';
 
 	/* If the Table Of Content title is set, display */
 	if ( $title ){
-		$open .= '<' . $title_tag . ' class="fx-toc-title">' . $title . '</' . $title_tag . '>';
+		$open .= '<' . $title_tag . ' class="toc-title">' . $title . '</' . $title_tag . '>';
 	}
 
 	/* Get opening level tags, open the list */
 	$cur = $lowest_heading - 1;
 	for( $i = $cur; $i < $lowest_heading; $i++ ) {
 		$level = $i - $lowest_heading + 2;
-		$open .= "<{$list} class='fx-toc-list level-{$level}'>\n";
+		$open .= "<{$list} class='toc-list level-{$level}'>\n";
 	}
 
 	$first = true;
@@ -121,7 +121,7 @@ function fx_toc_build_toc( $content, $args ){
 
 		if( $level > $max_heading ){ // heading too deep
 			continue;
-		} 
+		}
 
 		if( $level > $cur_level ) { // this needs to be nested
 			$heading_out .= str_repeat( "\t", $tabs+1 ) . fx_toc_sc_open_level( $level, $cur_level, $lowest_heading, $list );
@@ -196,7 +196,7 @@ function fx_toc_build_toc( $content, $args ){
 	$close .= fx_toc_sc_close_level( 0, $cur_level, $lowest_heading, $list );
 
 	/* Close sesame */
-	$close .= "</div>\n";
+	$close .= "</aside\n";
 
 	/* Check if heading exist. */
 	if ( $heading_out ){
