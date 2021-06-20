@@ -27,7 +27,7 @@ function fx_toc_shortcode( $atts ){
 		'depth'          => 6,
 		'list'           => 'ol',
 		'title'          => __( 'Inhalt', 'fx-toc' ),
-		'title_tag'      => 'h2',
+		'title_tag'      => 'div',
 	) );
 
 	$attr = shortcode_atts( $default_args, $atts );
@@ -53,7 +53,7 @@ function fx_toc_build_toc( $content, $args ){
 		'depth'          => 6,
 		'list'           => 'ol',
 		'title'          => __( 'Inhalt', 'fx-toc' ),
-		'title_tag'      => 'h2',
+		'title_tag'      => 'div',
 	) );
 	$attr = wp_parse_args( $args, $default_args );
 	extract( $attr );
@@ -98,7 +98,7 @@ function fx_toc_build_toc( $content, $args ){
 	$out = ''; //output
 
 	/* Open sesame */
-	$open = '<aside class="toc toc-id-' . get_the_ID() . '">';
+	$open = '<aside class="toc toc-id-' . get_the_ID() . '" role="navigation">';
 
 	/* If the Table Of Content title is set, display */
 	if ( $title ){
