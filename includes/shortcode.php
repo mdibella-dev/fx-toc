@@ -196,7 +196,7 @@ function fx_toc_build_toc( $content, $args ){
 	$close .= fx_toc_sc_close_level( 0, $cur_level, $lowest_heading, $list );
 
 	/* Close sesame */
-	$close .= "</aside\n";
+	$close .= "</aside>\n";
 
 	/* Check if heading exist. */
 	if ( $heading_out ){
