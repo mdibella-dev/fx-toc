@@ -102,7 +102,9 @@ function fx_toc_build_toc( $content, $args ){
 
 	/* If the Table Of Content title is set, display */
 	if ( $title ){
-		$open .= '<' . $title_tag . ' class="toc-title">' . $title . '</' . $title_tag . '>';
+		$open .= '<' . $title_tag . ' class="toc-title">';
+		$open .= '<span class="toc-icon"><i class="fal fa-list"></i></span>';
+		$open .= '<span>' . $title . '</span></' . $title_tag . '>';
 	}
 
 	/* Get opening level tags, open the list */
