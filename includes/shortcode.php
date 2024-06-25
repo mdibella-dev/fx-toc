@@ -102,7 +102,7 @@ function fx_toc_build_toc( $content, $args ) {
     $open = '<div class="fx-toc fx-toc-id-' . get_the_ID() . '">';
 
     /* If the Table Of Content title is set, display */
-    if ( $title ){
+    if ( $title ) {
         $open .= '<' . $title_tag . ' class="fx-toc-title">' . $title . '</' . $title_tag . '>';
     }
 
@@ -130,7 +130,7 @@ function fx_toc_build_toc( $content, $args ) {
             $tabs += 2;
         }
 
-        if ( !$first ) {
+        if ( ! $first ) {
             $heading_out .= str_repeat( "\t", $tabs ) . "</li>\n";
         }
         $first = false;
@@ -189,7 +189,7 @@ function fx_toc_build_toc( $content, $args ) {
 
     } // end heading
 
-    if( ! $first ) {
+    if ( ! $first ) {
         $close = str_repeat( "\t", $tabs ) . "</li>\n";
     }
 
