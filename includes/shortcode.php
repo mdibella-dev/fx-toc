@@ -7,11 +7,12 @@
 /* Add shortcode */
 add_shortcode( "toc", "fx_toc_shortcode" );
 
+
 /**
  * [toc] Shortcode to output the TOC.
  * @since 0.1.0
 **/
-function fx_toc_shortcode( $atts ){
+function fx_toc_shortcode( $atts ) {
 
     /* Bail if not in singular */
     if ( is_admin() ) return false;
@@ -42,7 +43,7 @@ function fx_toc_shortcode( $atts ){
  * Create TOC from content
  * @since 0.1.0
  */
-function fx_toc_build_toc( $content, $args ){
+function fx_toc_build_toc( $content, $args ) {
 
     /* Get globals */
     global $post, $wp_rewrite, $fx_toc_used_names;
@@ -67,10 +68,10 @@ function fx_toc_build_toc( $content, $args ){
     $lowest_heading = 1;
 
     /* Get the lowest value heading (ie <hN> where N is a number) in the post */
-    for( $i = 1; $i <= 6; $i++ ){
+    for ( $i = 1; $i <= 6; $i++ ) {
 
         /* Find the <h{x}> tag start from 1 to 6 and. if found, use it.  */
-        if( preg_match( "#<h" . $i . "#i", $content ) ) {
+        if ( preg_match( "#<h" . $i . "#i", $content ) ) {
             $lowest_heading = $i;
             break;
         }
@@ -84,7 +85,7 @@ function fx_toc_build_toc( $content, $args ){
     preg_match_all( "#<\!--nextpage-->#i", $content, $next_pages, PREG_OFFSET_CAPTURE );
     $next_pages = $next_pages[0];
 
-    /* Get all headings in post content */ 
+    /* Get all headings in post content */
     $headings = array();
     preg_match_all( "#<h([1-6]).*?>(.*?)</h[1-6]>#i", $content, $headings, PREG_OFFSET_CAPTURE );
 
@@ -107,7 +108,7 @@ function fx_toc_build_toc( $content, $args ){
 
     /* Get opening level tags, open the list */
     $cur = $lowest_heading - 1;
-    for( $i = $cur; $i < $lowest_heading; $i++ ) {
+    for ( $i = $cur; $i < $lowest_heading; $i++ ) {
         $level = $i - $lowest_heading + 2;
         $open .= "<{$list} class='fx-toc-list level-{$level}'>\n";
     }
@@ -116,25 +117,25 @@ function fx_toc_build_toc( $content, $args ){
     $tabs = 1;
 
     /* the headings */
-    foreach( $headings[2] as $i => $heading ) {
+    foreach ( $headings[2] as $i => $heading ) {
         $level = $headings[1][$i][0]; // <hN>
 
-        if( $level > $max_heading ){ // heading too deep
+        if ( $level > $max_heading ){ // heading too deep
             continue;
-        } 
+        }
 
-        if( $level > $cur_level ) { // this needs to be nested
+        if ( $level > $cur_level ) { // this needs to be nested
             $heading_out .= str_repeat( "\t", $tabs+1 ) . fx_toc_sc_open_level( $level, $cur_level, $lowest_heading, $list );
             $first = true;
             $tabs += 2;
         }
 
-        if( !$first ){
+        if ( !$first ) {
             $heading_out .= str_repeat( "\t", $tabs ) . "</li>\n";
         }
         $first = false;
 
-        if( $level < $cur_level ) { // jump back up from nest
+        if ( $level < $cur_level ) { // jump back up from nest
             $heading_out .= str_repeat( "\t", $tabs-1 ) . fx_toc_sc_close_level( $level, $cur_level, $lowest_heading, $list );
             $tabs -= 2;
         }
@@ -145,14 +146,14 @@ function fx_toc_build_toc( $content, $args ){
         $pos = $heading[1];
 
         /* find the current page */
-        foreach( $next_pages as $p ) {
-            if( $p[1] < $pos ){
+        foreach ( $next_pages as $p ) {
+            if ( $p[1] < $pos ) {
                 $page_num++;
             }
         }
 
         /* fix error if heading link overlap / not hieraricaly correct */
-        if ( $tabs+1 > 0 ){
+        if ( $tabs+1 > 0 ) {
             $tabs = $tabs;
         }
         else{
@@ -167,20 +168,20 @@ function fx_toc_build_toc( $content, $args ){
          * output the Contents item with link to the heading.
          * Uses unique ID based on the $prefix variable.
          */
-        if( $page_num != 1 ){
+        if ( $page_num != 1 ) {
 
             /* Pretty permalink :) */
             $search_permastruct = $wp_rewrite->get_search_permastruct();
-            if ( is_multisite() || !empty( $search_permastruct ) ){
+            if ( is_multisite() || !empty( $search_permastruct ) ) {
                 $heading_out .= str_repeat( "\t", $tabs ) . "<li>\n" . str_repeat( "\t", $tabs + 1 ) . "<a href=\"" . user_trailingslashit( trailingslashit( get_permalink( $post->ID ) ) . $page_num ) . "#" . sanitize_title( $name ). "\">" . strip_tags( $heading[0] ) . "</a>\n";
             }
 
             /* Ugly permalink :( */
-            else{
+            else {
                 $heading_out .= str_repeat( "\t", $tabs ) . "<li>\n" . str_repeat( "\t", $tabs + 1 ) . "<a href=\"?p=" . $post->ID . "&page=" . $page_num . "#" . sanitize_title( $name ). "\">" . strip_tags( $heading[0] ) . "</a>\n";
             }
         }
-        else{
+        else {
             $heading_out .= str_repeat( "\t", $tabs ) . "<li>\n" . str_repeat( "\t", $tabs + 1 ) . "<a href=\"" .get_permalink( $post->ID ). "#" . sanitize_title( $name ). "\">" . strip_tags( $heading[0] ) . "</a>\n";
         }
 
@@ -188,7 +189,7 @@ function fx_toc_build_toc( $content, $args ){
 
     } // end heading
 
-    if( !$first ){
+    if( !$first ) {
         $close = str_repeat( "\t", $tabs ) . "</li>\n";
     }
 
@@ -199,7 +200,7 @@ function fx_toc_build_toc( $content, $args ){
     $close .= "</div>\n";
 
     /* Check if heading exist. */
-    if ( $heading_out ){
+    if ( $heading_out ) {
         $out = $open . $heading_out . $close;
     }
 

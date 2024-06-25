@@ -12,17 +12,18 @@
 function fx_toc_sc_open_level( $new, $cur, $first, $type ) {
     $levels = $new - $cur;
     $out = "";
-    for( $i = $cur; $i < $new; $i++ ) {
+    for ( $i = $cur; $i < $new; $i++ ) {
         $level = $i - $first + 2;
-        if( ( $level % 2 ) == 0){
+        if ( ( $level % 2 ) == 0) {
             $out .= "<{$type} class='toc-even level-{$level}'>\n";
         }
-        else{
+        else {
             $out .= "<{$type} class='toc-odd level-{$level}'>\n";
         }
     }
     return $out;
 }
+
 
 /**
  * Close Nested Level: Get closing level tag
@@ -30,7 +31,7 @@ function fx_toc_sc_open_level( $new, $cur, $first, $type ) {
  */
 function fx_toc_sc_close_level( $new, $cur, $first, $type ) {
     $out = "";
-    for( $i = $cur; $i > $new; $i-- ){
+    for ( $i = $cur; $i > $new; $i-- ) {
         $out .= "</{$type}>\n";
     }
     return $out;
@@ -61,7 +62,7 @@ function fx_toc_sc_get_unique_name( $heading ) {
     }
 
     /* if no used name found, display normal anchor */
-    else{
+    else {
         $fx_toc_used_names[$n] = 0;
     }
 
@@ -69,12 +70,13 @@ function fx_toc_sc_get_unique_name( $heading ) {
     return $n;
 }
 
+
 /**
  * Reset Unique Name
- * 
+ *
  * @since 0.1.0
  */
-function fx_toc_sc_unique_names_reset(){
+function fx_toc_sc_unique_names_reset() {
     global $fx_toc_used_names;
     $fx_toc_used_names = array();
     return true;
