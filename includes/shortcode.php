@@ -24,12 +24,12 @@ function fx_toc_shortcode( $atts ) {
     $fx_toc_used_names = array();
 
     /* Default shortcode attr */
-    $default_args = apply_filters( 'fx_toc_default_args', array(
+    $default_args = apply_filters( 'fx_toc_default_args', [
         'depth'          => 6,
         'list'           => 'ul',
         'title'          => __( 'Table of contents', 'fx-toc' ),
         'title_tag'      => 'h2',
-    ) );
+    ] );
 
     $attr = shortcode_atts( $default_args, $atts );
 
@@ -50,12 +50,12 @@ function fx_toc_build_toc( $content, $args ) {
     fx_toc_sc_unique_names_reset();
 
     /* Shortcode attr */
-    $default_args = apply_filters( 'fx_toc_default_args', array(
+    $default_args = apply_filters( 'fx_toc_default_args', [
         'depth'          => 6,
         'list'           => 'ul',
         'title'          => __( 'Table of contents', 'fx-toc' ),
         'title_tag'      => 'h2',
-    ) );
+    ] );
     $attr = wp_parse_args( $args, $default_args );
     extract( $attr );
 
@@ -81,12 +81,12 @@ function fx_toc_build_toc( $content, $args ) {
     $max_heading = $lowest_heading + $depth - 1;
 
     /* Find page separation points, so it will work on multi page post */
-    $next_pages = array();
+    $next_pages = [];
     preg_match_all( "#<\!--nextpage-->#i", $content, $next_pages, PREG_OFFSET_CAPTURE );
     $next_pages = $next_pages[0];
 
     /* Get all headings in post content */
-    $headings = array();
+    $headings = [];
     preg_match_all( "#<h([1-6]).*?>(.*?)</h[1-6]>#i", $content, $headings, PREG_OFFSET_CAPTURE );
 
     /* Set lowest heading found */
