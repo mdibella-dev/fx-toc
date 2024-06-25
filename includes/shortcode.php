@@ -120,7 +120,7 @@ function fx_toc_build_toc( $content, $args ) {
     foreach ( $headings[2] as $i => $heading ) {
         $level = $headings[1][$i][0]; // <hN>
 
-        if ( $level > $max_heading ){ // heading too deep
+        if ( $level > $max_heading ) { // heading too deep
             continue;
         }
 
@@ -156,7 +156,7 @@ function fx_toc_build_toc( $content, $args ) {
         if ( $tabs+1 > 0 ) {
             $tabs = $tabs;
         }
-        else{
+        else {
             $tabs = 0;
         }
 
@@ -189,7 +189,7 @@ function fx_toc_build_toc( $content, $args ) {
 
     } // end heading
 
-    if( !$first ) {
+    if( ! $first ) {
         $close = str_repeat( "\t", $tabs ) . "</li>\n";
     }
 
