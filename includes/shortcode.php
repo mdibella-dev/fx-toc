@@ -2,7 +2,8 @@
 /**
  * Shortcodes
  * @since 0.1.0
-**/
+ */
+
 
 /* Add shortcode */
 add_shortcode( "toc", "fx_toc_shortcode" );
@@ -11,7 +12,8 @@ add_shortcode( "toc", "fx_toc_shortcode" );
 /**
  * [toc] Shortcode to output the TOC.
  * @since 0.1.0
-**/
+ */
+
 function fx_toc_shortcode( $atts ) {
 
     /* Bail if not in singular */
@@ -43,6 +45,7 @@ function fx_toc_shortcode( $atts ) {
  * Create TOC from content
  * @since 0.1.0
  */
+
 function fx_toc_build_toc( $content, $args ) {
 
     /* Get globals */

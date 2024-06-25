@@ -2,13 +2,14 @@
 /**
  * Shortcode Utility Functions
  * @since 0.1.0
-**/
+ */
 
 
 /**
  * Open Nested Level: Get opening level tag
  * @since 0.1.0
  */
+
 function fx_toc_sc_open_level( $new, $cur, $first, $type ) {
     $levels = $new - $cur;
     $out = "";
@@ -29,6 +30,7 @@ function fx_toc_sc_open_level( $new, $cur, $first, $type ) {
  * Close Nested Level: Get closing level tag
  * @since 0.1.0
  */
+
 function fx_toc_sc_close_level( $new, $cur, $first, $type ) {
     $out = "";
     for ( $i = $cur; $i > $new; $i-- ) {
@@ -44,6 +46,7 @@ function fx_toc_sc_close_level( $new, $cur, $first, $type ) {
  * properly even each heading have the same name.
  * @since 0.1.0
  */
+
 function fx_toc_sc_get_unique_name( $heading ) {
 
     /* globalize used name array */
@@ -76,6 +79,7 @@ function fx_toc_sc_get_unique_name( $heading ) {
  *
  * @since 0.1.0
  */
+ 
 function fx_toc_sc_unique_names_reset() {
     global $fx_toc_used_names;
     $fx_toc_used_names = [];

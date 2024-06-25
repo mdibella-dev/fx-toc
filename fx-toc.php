@@ -17,7 +17,8 @@
  * Credit Note: This plugin is based on WP TOC Plugin
  * by Brendon Boshell http://infinity-infinity.com/
  * With several improvement such as support for paginated content, etc.
-**/
+ */
+
 
 /* Do not access this file directly */
 if ( ! defined( 'WPINC' ) ) { die; }
@@ -42,10 +43,12 @@ define( 'FX_TOC_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 /* Plugins Loaded */
 add_action( 'plugins_loaded', 'fx_toc_plugins_loaded' );
 
+
 /**
  * Load Plugin
  * @since 0.1.0
  */
+
 function fx_toc_plugins_loaded() {
 
     /* Load Text Domain (Language Translation) */
@@ -60,6 +63,7 @@ function fx_toc_plugins_loaded() {
  * Add Action Link For Support
  * @since 1.1.0
  */
+
 function fx_toc_plugin_action_links( $links ) {
 
     /* Get current user info */
@@ -94,10 +98,12 @@ function fx_toc_plugin_action_links( $links ) {
 /* Load it on init */
 add_action( 'init', 'fx_toc_load' );
 
+
 /**
  * Do stuff.
  * @since 0.1.0
  */
+
 function fx_toc_load() {
 
     /* Load Shortcode Functions  */
