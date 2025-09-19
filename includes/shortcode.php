@@ -175,7 +175,7 @@ function fx_toc_build_toc( $content, $args ) {
 
             /* Pretty permalink :) */
             $search_permastruct = $wp_rewrite->get_search_permastruct();
-            if ( is_multisite() || !empty( $search_permastruct ) ) {
+            if ( is_multisite() or ! empty( $search_permastruct ) ) {
                 $heading_out .= str_repeat( "\t", $tabs ) . "<li>\n" . str_repeat( "\t", $tabs + 1 ) . "<a href=\"" . user_trailingslashit( trailingslashit( get_permalink( $post->ID ) ) . $page_num ) . "#" . sanitize_title( $name ). "\">" . strip_tags( $heading[0] ) . "</a>\n";
             }
 
