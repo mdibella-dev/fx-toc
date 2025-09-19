@@ -43,11 +43,11 @@ add_action( 'plugins_loaded', 'fx_toc_plugins_loaded' );
  */
 function fx_toc_plugins_loaded(){
 
-	/* Load Text Domain (Language Translation) */
-	load_plugin_textdomain( 'fx-toc', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+    /* Load Text Domain (Language Translation) */
+    load_plugin_textdomain( 'fx-toc', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
-	/* Plugin Action Link */
-	add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'fx_toc_plugin_action_links' );
+    /* Plugin Action Link */
+    add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'fx_toc_plugin_action_links' );
 }
 
 
@@ -57,29 +57,29 @@ function fx_toc_plugins_loaded(){
  */
 function fx_toc_plugin_action_links( $links ){
 
-	/* Get current user info */
-	if( function_exists( 'wp_get_current_user' ) ){
-		$current_user = wp_get_current_user();
-	}
-	else{
-		global $current_user;
-		get_currentuserinfo();
-	}
+    /* Get current user info */
+    if( function_exists( 'wp_get_current_user' ) ){
+        $current_user = wp_get_current_user();
+    }
+    else{
+        global $current_user;
+        get_currentuserinfo();
+    }
 
-	/* Build support url */
-	$support_url = add_query_arg(
-		[
-			'about'      => urlencode( 'f(x) TOC (v.' . FX_TOC_VERSION . ')' ),
-			'sp_name'    => urlencode( $current_user->display_name ),
-			'sp_email'   => urlencode( $current_user->user_email ),
-			'sp_website' => urlencode( home_url() ),
-		],
-		'http://genbumedia.com/contact/'
-	);
+    /* Build support url */
+    $support_url = add_query_arg(
+        [
+            'about'      => urlencode( 'f(x) TOC (v.' . FX_TOC_VERSION . ')' ),
+            'sp_name'    => urlencode( $current_user->display_name ),
+            'sp_email'   => urlencode( $current_user->user_email ),
+            'sp_website' => urlencode( home_url() ),
+        ],
+        'http://genbumedia.com/contact/'
+    );
 
-	/* Add support link */
-	$links[] = '<a target="_blank" href="' . esc_url( $support_url ) . '">' . __( 'Get Support', 'fx-toc' ) . '</a>';
-	return $links;
+    /* Add support link */
+    $links[] = '<a target="_blank" href="' . esc_url( $support_url ) . '">' . __( 'Get Support', 'fx-toc' ) . '</a>';
+    return $links;
 }
 
 
@@ -94,7 +94,7 @@ add_action( 'init', 'fx_toc_load' );
  * @since 0.1.0
  */
 function fx_toc_load(){
-	require_once FX_TOC_PATH . 'includes/shortcode-functions.php';
-	require_once FX_TOC_PATH . 'includes/shortcode.php';
-	require_once FX_TOC_PATH . 'includes/filter-content.php';
+    require_once FX_TOC_PATH . 'includes/shortcode-functions.php';
+    require_once FX_TOC_PATH . 'includes/shortcode.php';
+    require_once FX_TOC_PATH . 'includes/filter-content.php';
 }
