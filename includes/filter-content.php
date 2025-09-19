@@ -9,6 +9,7 @@
 add_filter( 'the_content', 'fx_toc_filter_content' );
 
 
+
 /**
  * Add ID in each heading in content
  * @since 0.1.0

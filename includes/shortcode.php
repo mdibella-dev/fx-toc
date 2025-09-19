@@ -5,6 +5,12 @@
  */
 
 
+/** Prevent direct access */
+
+defined( 'ABSPATH' ) or exit;
+
+
+
 /* Add shortcode */
 add_shortcode( "toc", "fx_toc_shortcode" );
 
