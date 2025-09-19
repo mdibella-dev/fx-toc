@@ -27,13 +27,8 @@ if ( ! defined( 'WPINC' ) ) { die; }
 /* Constants
 ------------------------------------------ */
 
-/* Plugin Version. */
 define( 'FX_TOC_VERSION', '1.1.0' );
-
-/* Path to plugin directory. */
 define( 'FX_TOC_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
-
-/* Plugin URL. */
 define( 'FX_TOC_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 
 
@@ -107,9 +102,9 @@ add_action( 'init', 'fx_toc_load' );
 function fx_toc_load() {
 
     /* Load Shortcode Functions  */
-    require_once( FX_TOC_PATH . 'includes/shortcode-functions.php' );
-    require_once( FX_TOC_PATH . 'includes/shortcode.php' );
+    require_once FX_TOC_PATH . 'includes/shortcode-functions.php';
+    require_once FX_TOC_PATH . 'includes/shortcode.php';
 
     /* Filter Content */
-    require_once( FX_TOC_PATH . 'includes/filter-content.php' );
+    require_once FX_TOC_PATH . 'includes/filter-content.php';
 }
