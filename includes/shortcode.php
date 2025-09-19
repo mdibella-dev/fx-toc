@@ -29,7 +29,7 @@ function fx_toc_shortcode( $atts ) {
     global $post;
 
     /* Reset used names (?) */
-    $fx_toc_used_names = array();
+    $fx_toc_used_names = [];
 
     /* Default shortcode attr */
     $default_args = apply_filters( 'fx_toc_default_args', [
