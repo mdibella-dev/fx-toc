@@ -34,9 +34,6 @@ define( 'FX_TOC_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 /* Plugins Loaded
 ------------------------------------------ */
 
-/* Plugins Loaded */
-add_action( 'plugins_loaded', 'fx_toc_plugins_loaded' );
-
 /**
  * Load Plugin
  * @since 0.1.0
@@ -49,6 +46,8 @@ function fx_toc_plugins_loaded(){
     /* Plugin Action Link */
     add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'fx_toc_plugin_action_links' );
 }
+
+add_action( 'plugins_loaded', 'fx_toc_plugins_loaded' );
 
 
 /**
@@ -86,15 +85,15 @@ function fx_toc_plugin_action_links( $links ){
 /* Init
 ------------------------------------------ */
 
-/* Load it on init */
-add_action( 'init', 'fx_toc_load' );
-
 /**
  * Do stuff.
  * @since 0.1.0
  */
+
 function fx_toc_load(){
     require_once FX_TOC_PATH . 'includes/shortcode-functions.php';
     require_once FX_TOC_PATH . 'includes/shortcode.php';
     require_once FX_TOC_PATH . 'includes/filter-content.php';
 }
+
+add_action( 'init', 'fx_toc_load' );
