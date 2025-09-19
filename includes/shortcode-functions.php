@@ -31,6 +31,7 @@ function fx_toc_sc_open_level( $new, $cur, $first, $type ) {
 
 /**
  * Close Nested Level: Get closing level tag
+ * *
  * @since 0.1.0
  */
 function fx_toc_sc_close_level( $new, $cur, $first, $type ) {
