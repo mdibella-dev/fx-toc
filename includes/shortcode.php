@@ -70,7 +70,7 @@ function fx_toc_build_toc( $content, $args ){
 	for( $i = 1; $i <= 6; $i++ ){
 
 		/* Find the <h{x}> tag start from 1 to 6 and. if found, use it.  */
-		if( preg_match( "#<h" . $i . "#i", $content ) ) {
+		if( is_string($content) && preg_match( "#<h" . $i . "#i", $content ) ) {
 			$lowest_heading = $i;
 			break;
 		}
