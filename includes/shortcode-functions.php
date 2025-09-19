@@ -17,7 +17,6 @@ defined( 'ABSPATH' ) or exit;
  */
 
 function fx_toc_sc_open_level( $new, $cur, $first, $type ) {
-    $levels = $new - $cur;
     $out = "";
     for ( $i = $cur; $i < $new; $i++ ) {
         $level = $i - $first + 2;
