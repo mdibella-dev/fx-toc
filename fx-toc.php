@@ -37,6 +37,7 @@ define( 'FX_TOC_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 
 /**
  * Load Plugin
+ *
  * @since 0.1.0
  */
 
@@ -54,6 +55,7 @@ add_action( 'plugins_loaded', 'fx_toc_plugins_loaded' );
 
 /**
  * Add Action Link For Support
+ *
  * @since 1.1.0
  */
 
@@ -90,6 +92,7 @@ function fx_toc_plugin_action_links( $links ) {
 
 /**
  * Do stuff.
+ *
  * @since 0.1.0
  */
 

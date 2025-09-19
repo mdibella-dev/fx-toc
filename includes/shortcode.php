@@ -1,8 +1,7 @@
 <?php
 /**
  * Shortcodes
- * @since 0.1.0
-**/
+ */
 
 
 /** Prevent direct access */
@@ -16,13 +15,14 @@ add_shortcode( "toc", "fx_toc_shortcode" );
 
 /**
  * [toc] Shortcode to output the TOC.
+ *
  * @since 0.1.0
  */
 
 function fx_toc_shortcode( $atts ) {
 
     /* Bail if not in singular */
-    if (is_admin()) {
+    if ( is_admin() ) {
         return false;
     }
 
@@ -50,6 +50,7 @@ function fx_toc_shortcode( $atts ) {
 
 /**
  * Create TOC from content
+ *
  * @since 0.1.0
  */
 

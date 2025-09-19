@@ -1,8 +1,7 @@
 <?php
 /**
  * Shortcode Utility Functions
- * @since 0.1.0
-**/
+ */
 
 
 /** Prevent direct access */
@@ -12,6 +11,7 @@ defined( 'ABSPATH' ) or exit;
 
 /**
  * Open Nested Level: Get opening level tag
+ *
  * @since 0.1.0
  */
 
@@ -45,8 +45,10 @@ function fx_toc_sc_close_level( $new, $cur, $first, $type ) {
 
 /**
  * Get Unique Name of the heading tag
+ *
  * this is needed so each internal anchor link can link
  * properly even each heading have the same name.
+ *
  * @since 0.1.0
  */
 function fx_toc_sc_get_unique_name( $heading ) {
