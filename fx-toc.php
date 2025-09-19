@@ -68,12 +68,12 @@ function fx_toc_plugin_action_links( $links ){
 
 	/* Build support url */
 	$support_url = add_query_arg(
-		array(
+		[
 			'about'      => urlencode( 'f(x) TOC (v.' . FX_TOC_VERSION . ')' ),
 			'sp_name'    => urlencode( $current_user->display_name ),
 			'sp_email'   => urlencode( $current_user->user_email ),
 			'sp_website' => urlencode( home_url() ),
-		),
+		],
 		'http://genbumedia.com/contact/'
 	);
 
