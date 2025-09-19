@@ -39,7 +39,8 @@ define( 'FX_TOC_URL', trailingslashit( plugin_dir_url( __FILE__ ) ) );
  * Load Plugin
  * @since 0.1.0
  */
-function fx_toc_plugins_loaded(){
+
+function fx_toc_plugins_loaded() {
 
     /* Load Text Domain (Language Translation) */
     load_plugin_textdomain( 'fx-toc', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
@@ -55,13 +56,14 @@ add_action( 'plugins_loaded', 'fx_toc_plugins_loaded' );
  * Add Action Link For Support
  * @since 1.1.0
  */
-function fx_toc_plugin_action_links( $links ){
+
+function fx_toc_plugin_action_links( $links ) {
 
     /* Get current user info */
-    if( function_exists( 'wp_get_current_user' ) ){
+    if ( function_exists( 'wp_get_current_user' ) ) {
         $current_user = wp_get_current_user();
     }
-    else{
+    else {
         global $current_user;
         get_currentuserinfo();
     }
@@ -91,7 +93,7 @@ function fx_toc_plugin_action_links( $links ){
  * @since 0.1.0
  */
 
-function fx_toc_load(){
+function fx_toc_load() {
     require_once FX_TOC_PATH . 'includes/shortcode-functions.php';
     require_once FX_TOC_PATH . 'includes/shortcode.php';
     require_once FX_TOC_PATH . 'includes/filter-content.php';
