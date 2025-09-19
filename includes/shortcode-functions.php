@@ -10,18 +10,18 @@
  * @since 0.1.0
  */
 function fx_toc_sc_open_level( $new, $cur, $first, $type ) {
-	$levels = $new - $cur;
-	$out = "";
-	for( $i = $cur; $i < $new; $i++ ) {
-		$level = $i - $first + 2;
-		if( ( $level % 2 ) == 0){
-			$out .= "<{$type} class='toc-even level-{$level}'>\n";
-		}
-		else{
-			$out .= "<{$type} class='toc-odd level-{$level}'>\n";
-		}
-	}
-	return $out;
+    $levels = $new - $cur;
+    $out = "";
+    for( $i = $cur; $i < $new; $i++ ) {
+        $level = $i - $first + 2;
+        if( ( $level % 2 ) == 0){
+            $out .= "<{$type} class='toc-even level-{$level}'>\n";
+        }
+        else{
+            $out .= "<{$type} class='toc-odd level-{$level}'>\n";
+        }
+    }
+    return $out;
 }
 
 /**
@@ -29,11 +29,11 @@ function fx_toc_sc_open_level( $new, $cur, $first, $type ) {
  * @since 0.1.0
  */
 function fx_toc_sc_close_level( $new, $cur, $first, $type ) {
-	$out = "";
-	for( $i = $cur; $i > $new; $i-- ){
-		$out .= "</{$type}>\n";
-	}
-	return $out;
+    $out = "";
+    for( $i = $cur; $i > $new; $i-- ){
+        $out .= "</{$type}>\n";
+    }
+    return $out;
 }
 
 
@@ -45,28 +45,28 @@ function fx_toc_sc_close_level( $new, $cur, $first, $type ) {
  */
 function fx_toc_sc_get_unique_name( $heading ) {
 
-	/* globalize used name array */
-	global $fx_toc_used_names;
+    /* globalize used name array */
+    global $fx_toc_used_names;
 
-	/* Slug like. */
-	$n = sanitize_title( $heading );
+    /* Slug like. */
+    $n = sanitize_title( $heading );
 
-	/* if uniqe name found, add unique id. */
-	if ( isset( $fx_toc_used_names[$n] ) ) {
-		$fx_toc_used_names[$n]++;
+    /* if uniqe name found, add unique id. */
+    if ( isset( $fx_toc_used_names[$n] ) ) {
+        $fx_toc_used_names[$n]++;
 
-		/* use underscore, to make sure it's unique */
-		$n .= "_" . $fx_toc_used_names[$n];
-		$fx_toc_used_names[$n] = 0;
-	}
+        /* use underscore, to make sure it's unique */
+        $n .= "_" . $fx_toc_used_names[$n];
+        $fx_toc_used_names[$n] = 0;
+    }
 
-	/* if no used name found, display normal anchor */
-	else{
-		$fx_toc_used_names[$n] = 0;
-	}
+    /* if no used name found, display normal anchor */
+    else{
+        $fx_toc_used_names[$n] = 0;
+    }
 
-	/* return the output */
-	return $n;
+    /* return the output */
+    return $n;
 }
 
 /**
@@ -75,7 +75,7 @@ function fx_toc_sc_get_unique_name( $heading ) {
  * @since 0.1.0
  */
 function fx_toc_sc_unique_names_reset(){
-	global $fx_toc_used_names;
-	$fx_toc_used_names = [];
-	return true;
+    global $fx_toc_used_names;
+    $fx_toc_used_names = [];
+    return true;
 }
