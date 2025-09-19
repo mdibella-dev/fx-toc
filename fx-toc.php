@@ -94,11 +94,7 @@ add_action( 'init', 'fx_toc_load' );
  * @since 0.1.0
  */
 function fx_toc_load(){
-
-	/* Load Shortcode Functions  */
-	require_once( FX_TOC_PATH . 'includes/shortcode-functions.php' );
-	require_once( FX_TOC_PATH . 'includes/shortcode.php' );
-
-	/* Filter Content */
-	require_once( FX_TOC_PATH . 'includes/filter-content.php' );
+	require_once FX_TOC_PATH . 'includes/shortcode-functions.php';
+	require_once FX_TOC_PATH . 'includes/shortcode.php';
+	require_once FX_TOC_PATH . 'includes/filter-content.php';
 }
