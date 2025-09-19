@@ -4,8 +4,15 @@
  * @since 0.1.0
 **/
 
+
+/** Prevent direct access */
+
+defined( 'ABSPATH' ) or exit;
+
+
 /* Add shortcode */
 add_shortcode( "toc", "fx_toc_shortcode" );
+
 
 /**
  * [toc] Shortcode to output the TOC.

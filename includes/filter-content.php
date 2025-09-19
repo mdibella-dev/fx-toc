@@ -4,6 +4,12 @@
  * @since 0.1.0
 **/
 
+
+/** Prevent direct access */
+
+defined( 'ABSPATH' ) or exit;
+
+
 /* filter the content */
 add_filter( 'the_content', 'fx_toc_filter_content' );
 

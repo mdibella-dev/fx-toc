@@ -19,8 +19,9 @@
  * With several improvement such as support for paginated content, etc.
 **/
 
-/* Do not access this file directly */
-if ( ! defined( 'WPINC' ) ) { die; }
+/** Prevent direct access */
+
+defined( 'ABSPATH' ) or exit;
 
 
 /* Constants

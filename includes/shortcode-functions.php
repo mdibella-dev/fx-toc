@@ -5,6 +5,11 @@
 **/
 
 
+/** Prevent direct access */
+
+defined( 'ABSPATH' ) or exit;
+
+
 /**
  * Open Nested Level: Get opening level tag
  * @since 0.1.0
