@@ -76,6 +76,6 @@ function fx_toc_sc_get_unique_name( $heading ) {
  */
 function fx_toc_sc_unique_names_reset(){
 	global $fx_toc_used_names;
-	$fx_toc_used_names = array();
+	$fx_toc_used_names = [];
 	return true;
 }
